@@ -41,7 +41,15 @@
 
 
     // Add your code here
-
+    for (i; i > 1; i--) {
+        if (isPrime(i)) {
+            if (i === 2) {
+                para.textContent += `and ${i}.`;
+            } else {
+                para.textContent += `${i}, `;
+            }
+        }
+    }
 
     // Don't edit the code below here!
     const section = document.querySelector('section');
