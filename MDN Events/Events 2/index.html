@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <title>Events: Task 2</title>
     <style>
       p {
@@ -21,65 +21,67 @@
   </head>
 
   <body>
+    <section class="preview"></section>
 
-    <section class="preview">
-    </section>
+    <canvas width="480" height="320" tabindex="0"> </canvas>
 
-    <canvas width="480" height="320" tabindex="0">
+    <script>
+          const canvas = document.querySelector('canvas');
+          const ctx = canvas.getContext('2d');
 
-    </canvas>
+          function drawCircle(x, y, size) {
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  <script>
-    const canvas = document.querySelector('canvas');
-    const ctx = canvas.getContext('2d');
+            ctx.beginPath();
+            ctx.fillStyle = 'black';
+            ctx.arc(x, y, size, 0, 2 * Math.PI);
+            ctx.fill();
+          }
 
-    function drawCircle(x, y, size) {
-      ctx.fillStyle = 'white';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+          let x = 50;
+          let y = 50;
+          const size = 30;
 
-      ctx.beginPath();
-      ctx.fillStyle = 'black';
-      ctx.arc(x, y, size, 0, 2 * Math.PI);
-      ctx.fill();
-    }
+          drawCircle(x, y, size);
 
-    let x = 50;
-    let y = 50;
-    const size = 30;
+          // Add your code here
+          document.addEventListener('keydown', (event) => {
+              let name = event.key;
 
-    drawCircle(x, y, size);
+              if (name === 'w') {
+                  y -= 50;
+              }
 
-    // Add your code here
-    document.addEventListener('keydown', (event) => {
-        let name = event.key;
+              if (name === 'a') {
+                  x -= 50;
+              }
 
-        if (name === 'w') {
-            x = 50;
-            y += 50;
-            drawCircle(x, y, size);
-        }
-        
-        if (name === 'a') {
-            x -= 50;
-            y = 50;
-            drawCircle(x, y, size);
-        }
-        
-        if (name === 's') {
-            x = 50;
-            y -= 50;
-            drawCircle(x, y, size);
-        }
-        
-        if (name === 'd') {
-            x += 50;
-            y = 50;
-            drawCircle(x, y, size);
-        }
-    })
-    
-    
-  </script>
+              if (name === 's') {
+                  y += 50;
+              }
+
+              if (name === 'd') {
+                  x += 50;
+              }
+              drawCircle(x, y, size);
+          })
+
+
+      // document.addEventListener('keydown', (event)=> {
+      // let keyName = event.key;
+      // console.log(keyName);
+      // if(keyName === 'w') {
+      // y -= 1;
+      // } else if (keyName === 's'){
+      // y += 1;
+      // } else if (keyName === 'a'){
+      // x -= 1;
+      // } else if (keyName === 'd'){
+      // x += 1;
+      // }
+      // drawCircle(x, y, size);
+      // });
+    </script>
   </body>
-  
 </html>
