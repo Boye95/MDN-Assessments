@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Object basics: Task 2</title>
+    <style>
+      p {
+        color: purple;
+        margin: 0.5em 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+
+  <body>
+
+    <section class="preview">
+
+
+
+    </section>
+
+  </body>
+  <script>
+    let bandInfo;
+
+    // Add your code here
+    bandInfo = {
+      name: "The Beatles",
+      members: [
+        {
+          name: "John Lennon",
+          instrument: "guitar"
+        },
+        {
+          name: "Paul McCartney",
+          instrument: "bass"
+        },
+        {
+          name: "George Harrison",
+          instrument: "guitar"
+        },
+        {
+          name: "Ringo Starr",
+          instrument: "drums"
+        }
+      ],
+      albums: [
+        {
+          name: "Abbey Road",
+          year: 1969,
+          songs: [
+            {
+              name: "Come Together",
+              duration: "2:15"
+            },
+            {
+              name: "Something",
+              duration: "2:05"
+            },
+            {
+              name: "Maxwell's Silver Hammer",
+              duration: "2:34"
+            },
+            {
+              name: "Oh! Darling",
+              duration: "1:43"
+            },
+            {
+              name: "Octopus's Garden",
+              duration: "2:24"
+            },
+            {
+              name: "I Want You (She's So Heavy)",
+              duration: "2:13"
+            },
+            {
+              name: "Here Comes the Sun",
+              duration: "2:20"
+            },
+            {
+              name: "Because",
+              duration: "2:01"
+            },
+            {
+              name: "You Never Give Me Your Money",
+              duration: "2:05"
+            },
+            {
+              name: "Sun King",
+              duration: "2:01"
+            },
+            {
+              name: "Mean Mr. Mustard",
+              duration: "2:01"
+            },
+            {
+              name: "Polythene Pam",
+              duration: "1:46"
+            },
+            {
+              name: "She Came in Through the Bathroom Window",
+              duration: "2:05"
+            },
+            {
+              name: "Golden Slumbers",
+              duration: "2:01"
+            },
+            {
+              name: "Carry That Weight",
+              duration: "2:01"
+            },
+            {
+              name: "The End",
+              duration: "2:01"
+            }
+          ]
+        },
+        {
+          name: "The White Album",
+          year: 1968,
+          songs: [
+            {
+              name: "Come Together",
+              duration: "2:15"
+            },
+            {
+              name: "Something",
+              duration: "2:05"
+    };
+
+
+    // Don't edit the code below here!
+
+    const section = document.querySelector('section');
+    let para1 = document.createElement('p');
+    para1.textContent = bandInfo;
+    section.appendChild(para1);
+  </script>
+
+</html>
