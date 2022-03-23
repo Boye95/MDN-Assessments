@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Object basics: Task 2</title>
+    <style>
+      p {
+        color: purple;
+        margin: 0.5em 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+
+  <body>
+
+    <section class="preview">
+
+
+
+    </section>
+
+  </body>
+  <script>
+    let bandInfo;
+
+    // Add your code here
+    let myBnd = {
+      name: "One Direction",
+      nationality: "English",
+      genre: "Pop",
+      members: 4,
+      formed: 2010,
+      split: false,
+      albums: [
+        {
+          name: "Up All Night",
+          released: 2011
+        },
+        {
+          name: "Take Me Home",
+          released: 2012
+        },
+        {
+          name: "Midnight Memories",
+          released: 2013
+        },
+        {
+          name: "Four",
+          released: 2014
+        },
+        {
+          name: "Made in thw A.M.",
+          released: 2015
+        }
+      ]
+
+    }
+
+    bandInfo = `The ${ myBnd.nationality } ${ myBnd.genre } band ${ myBnd.name } were active ${ myBnd.formed }-${ myBnd.split }. Their first album, ${ myBnd.albums[0].name }, was released in ${ myBnd.albums[0].released }.`;
+    // Don't edit the code below here!
+
+    const section = document.querySelector('section');
+    let para1 = document.createElement('p');
+    para1.textContent = bandInfo;
+    section.appendChild(para1);
+  </script>
+
+</html>
