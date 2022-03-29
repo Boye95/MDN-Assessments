@@ -19,12 +19,18 @@ function randomRGB() {
   return `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`;
 }
 
-class Ball {
-  constructor(x, y, velX, velY, color, size) {
+class Shape {
+  constructor(x, y, velX, velY) {
     this.x = x;
     this.y = y;
     this.velX = velX;
     this.velY = velY;
+  }
+}
+
+class Ball extends Shape {
+  constructor(x, y, velX, velY, color, size) {
+    super(x, y, velX, velY);
     this.color = color;
     this.size = size;
   }
@@ -59,7 +65,7 @@ class Ball {
 
   collisionDetect() {
     for (const ball of balls) {
-      if (!(this === ball)) {
+      if (!(this === ball) && ball.exists) {
         const dx = this.x - ball.x;
         const dy = this.y - ball.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
@@ -70,7 +76,38 @@ class Ball {
       }
     }
   }
+
+  exists() {
+    if (balls.length === true) {
+      return true;
+    }
+  }
 }
+
+class EvilCircle extends Shape {
+   constructor(x, y) {
+      super(x, y, 20, 20);
+      this.color = "white";
+      this.size = 10;
+   }
+}
+window.addEventListener('keydown', (e) => {
+   switch(e.key) {
+     case 'a':
+       this.x -= this.velX;
+       break;
+     case 'd':
+       this.x += this.velX;
+       break;
+     case 'w':
+       this.y -= this.velY;
+       break;
+     case 's':
+       this.y += this.velY;
+       break;
+   }
+ });
+ 
 
 const balls = [];
 
@@ -91,17 +128,16 @@ while (balls.length < 25) {
 }
 
 function loop() {
-   ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
-   ctx.fillRect(0, 0, width, height);
+  ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
+  ctx.fillRect(0, 0, width, height);
 
-   for (const ball of balls) {
-     ball.draw();
-     ball.update();
-     ball.collisionDetect();
-   }
+  for (const ball of balls) {
+    ball.draw();
+    ball.update();
+    ball.collisionDetect();
+  }
 
-   requestAnimationFrame(loop);
+  requestAnimationFrame(loop);
 }
-
 
 loop();
