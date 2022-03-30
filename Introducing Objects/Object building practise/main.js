@@ -1,5 +1,8 @@
 // setup canvas
 
+const para = document.querySelector('p');
+let count = 0;
+
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -31,6 +34,7 @@ class Shape {
 class Ball extends Shape {
   constructor(x, y, velX, velY, color, size) {
     super(x, y, velX, velY);
+    
     this.color = color;
     this.size = size;
   }
@@ -90,7 +94,48 @@ class EvilCircle extends Shape {
       this.color = "white";
       this.size = 10;
    }
+
+   draw() {
+    ctx.beginPath();
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = this.color;
+    ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+    ctx.stroke();
+  }
+
+  checkBounds() {
+    if (this.x + this.size >= width) {
+      this.x = -this.x;
+    }
+
+    if (this.x - this.size <= 0) {
+      this.x = -this.x;
+    }
+
+    if (this.y + this.size >= height) {
+      this.y = -this.y;
+    }
+
+    if (this.y - this.size <= 0) {
+      this.x = -this.y;
+    }
+  }
+
+  collisionDetect() {
+    for (const ball of balls) {
+      if (ball.exists === true) {
+        const dx = this.x - ball.x;
+        const dy = this.y - ball.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < this.size + ball.size) {
+          ball.size = 0;
+        }
+      }
+    }
+  }
 }
+
 window.addEventListener('keydown', (e) => {
    switch(e.key) {
      case 'a':
@@ -132,12 +177,17 @@ function loop() {
   ctx.fillRect(0, 0, width, height);
 
   for (const ball of balls) {
-    ball.draw();
-    ball.update();
-    ball.collisionDetect();
+    if (ball.exists === true) {
+      ball.draw();
+      ball.update();
+      ball.collisionDetect();
+      
+    }
   }
 
   requestAnimationFrame(loop);
+
+  let newEvil = new EvilCircle(4, 4);
 }
 
 loop();
